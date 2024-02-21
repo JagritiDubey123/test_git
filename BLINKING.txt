@@ -11,7 +11,7 @@ public class A extends Applet {
  private int flag = 0;
  public void paint(Graphics g) {
 
- draw();
+ draw();khcbjm bkjnAXdkjgaiUVsx b
  }
  public void draw() {
  Graphics g = this.getGraphics();
