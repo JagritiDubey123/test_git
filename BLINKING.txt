@@ -1,0 +1,58 @@
+import java.applet.Applet;
+//<applet code="A.class" width=200 height=200></applet>
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+public class A extends Applet {
+ private static final long serialVersionUID = -1152278362796573663L;
+ public class MyCanvas extends Canvas {
+ private static final long serialVersionUID = -4372759074220420333L;
+ private int flag = 0;
+ public void paint(Graphics g) {
+
+ draw();
+ }
+ public void draw() {
+ Graphics g = this.getGraphics();
+ g.setColor(Color.BLACK);
+ super.paint(g);
+ if (flag == 0) {
+ System.out.println(flag);
+ g.drawOval(40, 40, 120, 150);// face
+ g.drawRect(57, 75, 30, 5);// left eye shut
+ g.drawRect(110, 75, 30, 20);// right eye
+ g.drawOval(85, 100, 30, 30);// nose
+ g.fillArc(60, 125, 80, 40, 180, 180);// mouth
+ g.drawOval(25, 92, 15, 30);// left ear
+ g.drawOval(160, 92, 15, 30);// right ear
+ flag = 1;
+ } else {
+ System.out.println(flag);
+ g.drawOval(40, 40, 120, 150);// face
+ g.drawOval(57, 75, 30, 20);// left eye
+ g.drawOval(110, 75, 30, 20);// right eye
+ g.fillOval(68, 81, 10, 10);// left pupil
+ g.fillOval(121, 81, 10, 10);// right pupil
+ g.drawOval(85, 100, 30, 30);// nose
+ g.fillArc(60, 125, 80, 40, 180, 180);// mouth
+ g.drawOval(25, 92, 15, 30);// left ear
+ g.drawOval(160, 92, 15, 30);// right ear
+ flag = 0;
+ }
+ try {
+ Thread.sleep(900);
+ } catch (Exception e) {
+ System.out.println("killed while sleeping");
+ }
+ this.repaint(100);
+ }
+ }
+ public void init() {
+ this.C = new MyCanvas();
+ this.setLayout(new BorderLayout());
+ this.add(C, BorderLayout.CENTER);
+ C.setBackground(Color.GRAY);
+ }
+ private MyCanvas C;
+}
